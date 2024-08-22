@@ -39,3 +39,25 @@ exports.getPriceByDate = async (date) => {
         throw new Error('Erro ao buscar o preço do Bitcoin.');
     }
 };
+
+exports.getPriceChangeBetweenDates = async (date1, date2) => {
+    try {
+        // Buscar os preços nas duas datas
+        const price1 = await this.getPriceByDate(date1);
+        const price2 = await this.getPriceByDate(date2);
+
+        if (price1 && price2) {
+            // Calcular a porcentagem de valorização ou desvalorização
+            const priceChange = ((price2 - price1) / price1) * 100;
+            return priceChange;  // Retorna a porcentagem de mudança
+        } else {
+            throw new Error('Não foi possível obter os preços para as datas fornecidas.');
+        }
+    } catch (error) {
+        console.error('Erro ao calcular a valorização/desvalorização:', error);
+        throw new Error('Erro ao calcular a valorização/desvalorização.');
+    }
+};
+
+
+
