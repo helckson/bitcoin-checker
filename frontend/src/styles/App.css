@@ -14,6 +14,7 @@ body {
   
   .App {
     text-align: center;
+    padding: 20px;
   }
   
   .App-logo {
@@ -66,16 +67,19 @@ body {
   
   .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 20px;
+    margin-top: 20px;
   }
   
   .box {
     width: 48%;
-    padding: 20px;
+    padding: 30px;
     border: 2px solid #ff8c00;
     border-radius: 10px;
     background-color: #fffaf0;
+    box-sizing: border-box;
+    margin: 25px;
   }
   
   button {
@@ -93,12 +97,12 @@ body {
   }
   
   input {
-    padding: 10px;
+    padding: 5px;
     margin-bottom: 10px;
     width: 100%;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 10px;
+    font-size: 15px;
   }
   
   
