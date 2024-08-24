@@ -7,7 +7,7 @@ export const useBitcoinPrice = () => {
 
   const fetchPriceByDate = async (date) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/bitcoin-price?date=${date}`);
+      const response = await fetch(`https://bitcoin-backend-dnt3.onrender.com?date=${date}`);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -23,7 +23,7 @@ export const useBitcoinPrice = () => {
 
   const fetchPriceChange = async (date1, date2) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/bitcoin-price-change?date1=${date1}&date2=${date2}`);
+      const response = await fetch(`https://bitcoin-backend-dnt3.onrender.com?date1=${date1}&date2=${date2}`);
       const data = await response.text();
       setPriceChange(data);
       setError('');
