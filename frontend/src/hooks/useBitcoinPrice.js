@@ -23,7 +23,7 @@ export const useBitcoinPrice = () => {
 
   const fetchPriceChange = async (date1, date2) => {
     try {
-      const response = await fetch(`https://bitcoin-backend-dnt3.onrender.com?date1=${date1}&date2=${date2}`);
+      const response = await fetch(`https://bitcoin-backend-dnt3.onrender.com/bitcoin-price-change?date1=${date1}&date2=${date2}`);
       const data = await response.text();
       setPriceChange(data);
       setError('');
