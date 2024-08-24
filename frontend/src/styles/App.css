@@ -110,4 +110,13 @@ body {
         font-size: 14px;
         padding: 10px;
     }
-  }
+    
+    .container {
+      width: 100%;
+      padding: 5px;
+    }
+
+    .menu {
+        display: block;
+    }
+}
