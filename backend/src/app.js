@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 const port = 3000;
 
-app.use('/api', bitcoinRoutes);
+app.use(bitcoinRoutes);
 
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
