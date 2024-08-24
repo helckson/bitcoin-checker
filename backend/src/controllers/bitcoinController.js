@@ -1,4 +1,6 @@
 const bitcoinService = require('../services/bitcoinService');
+const { formatDateForCoinGecko } = require('../utils/dateUtils');
+
 
 
 exports.getBitcoinPriceByDate = async (req, res) => {
@@ -10,9 +12,10 @@ exports.getBitcoinPriceByDate = async (req, res) => {
 
     try {
         const price = await bitcoinService.getPriceByDate(date);
+        const dateFormatted = formatDateForCoinGecko(date);
 
         if (price) {
-            res.json({ price: price, message: `O preço do Bitcoin em ${date} foi $${price} USD.` });
+            res.json({ price: price, message: `O preço do Bitcoin em ${dateFormatted} foi $${price.toFixed(2)} USD.` });
         } else {
             res.status(404).json({ error: 'Não foi possível obter o preço para essa data.' });
         }
@@ -33,8 +36,8 @@ exports.getBitcoinPriceChange = async (req, res) => {
         const priceChange = await bitcoinService.getPriceChangeBetweenDates(date1, date2);
 
         const message = priceChange > 0
-            ? `O Bitcoin valorizou ${priceChange.toFixed(2)}% entre ${date1} e ${date2}.`
-            : `O Bitcoin desvalorizou ${Math.abs(priceChange).toFixed(2)}% entre ${date1} e ${date2}.`;
+            ? `O Bitcoin valorizou ${priceChange.toFixed(2)}% entre ${formatDateForCoinGecko(date1)} e ${formatDateForCoinGecko(date2)}.`
+            : `O Bitcoin desvalorizou ${Math.abs(priceChange).toFixed(2)}% entre ${formatDateForCoinGecko(date1)} e ${formatDateForCoinGecko(date2)}.`;
 
         res.send(message);
     } catch (error) {
