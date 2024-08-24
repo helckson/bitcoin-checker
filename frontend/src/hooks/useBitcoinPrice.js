@@ -7,7 +7,7 @@ export const useBitcoinPrice = () => {
 
   const fetchPriceByDate = async (date) => {
     try {
-      const response = await fetch(`https://bitcoin-backend-dnt3.onrender.com?date=${date}`);
+      const response = await fetch(`https://bitcoin-backend-dnt3.onrender.com/bitcoin-price?date=${date}`);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
